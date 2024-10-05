@@ -6,6 +6,8 @@ import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 import { join } from 'path';
 import { AuthModule } from './modules/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
+import { UserService } from './user/user.service';
+import { PrismaService } from './prisma.service';
 
 @Module({
   imports: [
@@ -19,6 +21,6 @@ import { SharedModule } from './shared/shared.module';
     SharedModule,
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, UserService, PrismaService],
 })
 export class AppModule {}

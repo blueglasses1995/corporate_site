@@ -1,24 +1,39 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
+import { Int } from '@nestjs/graphql';
+import { CommentCreateNestedManyWithoutArticleInput } from '../comment/comment-create-nested-many-without-article.input';
+import { LikeCreateNestedManyWithoutArticleInput } from '../like/like-create-nested-many-without-article.input';
+import { ArticleImageCreateNestedManyWithoutArticleInput } from '../article-image/article-image-create-nested-many-without-article.input';
+import { CategoryCreateNestedOneWithoutArticlesInput } from '../category/category-create-nested-one-without-articles.input';
 
 @InputType()
 export class ArticleCreateInput {
+  @Field(() => String, { nullable: false })
+  title!: string;
 
-    @Field(() => String, {nullable:false})
-    title!: string;
+  @Field(() => String, { nullable: false })
+  content!: string;
 
-    @Field(() => String, {nullable:true})
-    description?: string;
+  @Field(() => Int, { nullable: true })
+  views?: number;
 
-    @Field(() => String, {nullable:false})
-    body!: string;
+  @Field(() => Date, { nullable: true })
+  createdAt?: Date | string;
 
-    @Field(() => Boolean, {nullable:true})
-    published?: boolean;
+  @Field(() => Date, { nullable: true })
+  updatedAt?: Date | string;
 
-    @Field(() => Date, {nullable:true})
-    createdAt?: Date | string;
+  @Field(() => CommentCreateNestedManyWithoutArticleInput, { nullable: true })
+  comments?: CommentCreateNestedManyWithoutArticleInput;
 
-    @Field(() => Date, {nullable:true})
-    updatedAt?: Date | string;
+  @Field(() => LikeCreateNestedManyWithoutArticleInput, { nullable: true })
+  likes?: LikeCreateNestedManyWithoutArticleInput;
+
+  @Field(() => ArticleImageCreateNestedManyWithoutArticleInput, {
+    nullable: true,
+  })
+  ArticleImage?: ArticleImageCreateNestedManyWithoutArticleInput;
+
+  @Field(() => CategoryCreateNestedOneWithoutArticlesInput, { nullable: false })
+  Category!: CategoryCreateNestedOneWithoutArticlesInput;
 }

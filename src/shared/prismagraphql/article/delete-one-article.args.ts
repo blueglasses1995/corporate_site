@@ -6,8 +6,7 @@ import { Type } from 'class-transformer';
 
 @ArgsType()
 export class DeleteOneArticleArgs {
-
-    @Field(() => ArticleWhereUniqueInput, {nullable:false})
-    @Type(() => ArticleWhereUniqueInput)
-    where!: Prisma.AtLeast<ArticleWhereUniqueInput, 'id' | 'title'>;
+  @Field(() => ArticleWhereUniqueInput, { nullable: false })
+  @Type(() => ArticleWhereUniqueInput)
+  where!: Prisma.AtLeast<ArticleWhereUniqueInput, 'id'>;
 }

@@ -1,28 +1,43 @@
 import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { StringFieldUpdateOperationsInput } from '../prisma/string-field-update-operations.input';
-import { NullableStringFieldUpdateOperationsInput } from '../prisma/nullable-string-field-update-operations.input';
-import { BoolFieldUpdateOperationsInput } from '../prisma/bool-field-update-operations.input';
+import { IntFieldUpdateOperationsInput } from '../prisma/int-field-update-operations.input';
 import { DateTimeFieldUpdateOperationsInput } from '../prisma/date-time-field-update-operations.input';
+import { CommentUpdateManyWithoutArticleNestedInput } from '../comment/comment-update-many-without-article-nested.input';
+import { LikeUpdateManyWithoutArticleNestedInput } from '../like/like-update-many-without-article-nested.input';
+import { ArticleImageUpdateManyWithoutArticleNestedInput } from '../article-image/article-image-update-many-without-article-nested.input';
+import { CategoryUpdateOneRequiredWithoutArticlesNestedInput } from '../category/category-update-one-required-without-articles-nested.input';
 
 @InputType()
 export class ArticleUpdateInput {
+  @Field(() => StringFieldUpdateOperationsInput, { nullable: true })
+  title?: StringFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    title?: StringFieldUpdateOperationsInput;
+  @Field(() => StringFieldUpdateOperationsInput, { nullable: true })
+  content?: StringFieldUpdateOperationsInput;
 
-    @Field(() => NullableStringFieldUpdateOperationsInput, {nullable:true})
-    description?: NullableStringFieldUpdateOperationsInput;
+  @Field(() => IntFieldUpdateOperationsInput, { nullable: true })
+  views?: IntFieldUpdateOperationsInput;
 
-    @Field(() => StringFieldUpdateOperationsInput, {nullable:true})
-    body?: StringFieldUpdateOperationsInput;
+  @Field(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+  createdAt?: DateTimeFieldUpdateOperationsInput;
 
-    @Field(() => BoolFieldUpdateOperationsInput, {nullable:true})
-    published?: BoolFieldUpdateOperationsInput;
+  @Field(() => DateTimeFieldUpdateOperationsInput, { nullable: true })
+  updatedAt?: DateTimeFieldUpdateOperationsInput;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    createdAt?: DateTimeFieldUpdateOperationsInput;
+  @Field(() => CommentUpdateManyWithoutArticleNestedInput, { nullable: true })
+  comments?: CommentUpdateManyWithoutArticleNestedInput;
 
-    @Field(() => DateTimeFieldUpdateOperationsInput, {nullable:true})
-    updatedAt?: DateTimeFieldUpdateOperationsInput;
+  @Field(() => LikeUpdateManyWithoutArticleNestedInput, { nullable: true })
+  likes?: LikeUpdateManyWithoutArticleNestedInput;
+
+  @Field(() => ArticleImageUpdateManyWithoutArticleNestedInput, {
+    nullable: true,
+  })
+  ArticleImage?: ArticleImageUpdateManyWithoutArticleNestedInput;
+
+  @Field(() => CategoryUpdateOneRequiredWithoutArticlesNestedInput, {
+    nullable: true,
+  })
+  Category?: CategoryUpdateOneRequiredWithoutArticlesNestedInput;
 }

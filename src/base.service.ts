@@ -21,7 +21,7 @@ export class BaseCrudService<
   async findFirst(args: FindFirstArg): Promise<T | null> {
     try {
       return await this.prisma[this.getModelName()].findFirst(args);
-    } catch (e) {
+    } catch (_e: unknown) {
       return undefined;
     }
   }

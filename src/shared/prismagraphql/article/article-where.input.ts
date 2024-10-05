@@ -2,40 +2,53 @@ import { Field } from '@nestjs/graphql';
 import { InputType } from '@nestjs/graphql';
 import { IntFilter } from '../prisma/int-filter.input';
 import { StringFilter } from '../prisma/string-filter.input';
-import { StringNullableFilter } from '../prisma/string-nullable-filter.input';
-import { BoolFilter } from '../prisma/bool-filter.input';
 import { DateTimeFilter } from '../prisma/date-time-filter.input';
+import { CommentListRelationFilter } from '../comment/comment-list-relation-filter.input';
+import { LikeListRelationFilter } from '../like/like-list-relation-filter.input';
+import { ArticleImageListRelationFilter } from '../article-image/article-image-list-relation-filter.input';
+import { CategoryRelationFilter } from '../category/category-relation-filter.input';
 
 @InputType()
 export class ArticleWhereInput {
+  @Field(() => [ArticleWhereInput], { nullable: true })
+  AND?: Array<ArticleWhereInput>;
 
-    @Field(() => [ArticleWhereInput], {nullable:true})
-    AND?: Array<ArticleWhereInput>;
+  @Field(() => [ArticleWhereInput], { nullable: true })
+  OR?: Array<ArticleWhereInput>;
 
-    @Field(() => [ArticleWhereInput], {nullable:true})
-    OR?: Array<ArticleWhereInput>;
+  @Field(() => [ArticleWhereInput], { nullable: true })
+  NOT?: Array<ArticleWhereInput>;
 
-    @Field(() => [ArticleWhereInput], {nullable:true})
-    NOT?: Array<ArticleWhereInput>;
+  @Field(() => IntFilter, { nullable: true })
+  id?: IntFilter;
 
-    @Field(() => IntFilter, {nullable:true})
-    id?: IntFilter;
+  @Field(() => StringFilter, { nullable: true })
+  title?: StringFilter;
 
-    @Field(() => StringFilter, {nullable:true})
-    title?: StringFilter;
+  @Field(() => StringFilter, { nullable: true })
+  content?: StringFilter;
 
-    @Field(() => StringNullableFilter, {nullable:true})
-    description?: StringNullableFilter;
+  @Field(() => IntFilter, { nullable: true })
+  views?: IntFilter;
 
-    @Field(() => StringFilter, {nullable:true})
-    body?: StringFilter;
+  @Field(() => IntFilter, { nullable: true })
+  categoryId?: IntFilter;
 
-    @Field(() => BoolFilter, {nullable:true})
-    published?: BoolFilter;
+  @Field(() => DateTimeFilter, { nullable: true })
+  createdAt?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
-    createdAt?: DateTimeFilter;
+  @Field(() => DateTimeFilter, { nullable: true })
+  updatedAt?: DateTimeFilter;
 
-    @Field(() => DateTimeFilter, {nullable:true})
-    updatedAt?: DateTimeFilter;
+  @Field(() => CommentListRelationFilter, { nullable: true })
+  comments?: CommentListRelationFilter;
+
+  @Field(() => LikeListRelationFilter, { nullable: true })
+  likes?: LikeListRelationFilter;
+
+  @Field(() => ArticleImageListRelationFilter, { nullable: true })
+  ArticleImage?: ArticleImageListRelationFilter;
+
+  @Field(() => CategoryRelationFilter, { nullable: true })
+  Category?: CategoryRelationFilter;
 }

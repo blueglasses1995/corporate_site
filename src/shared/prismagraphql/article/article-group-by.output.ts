@@ -9,40 +9,39 @@ import { ArticleMaxAggregate } from './article-max-aggregate.output';
 
 @ObjectType()
 export class ArticleGroupBy {
+  @Field(() => Int, { nullable: false })
+  id!: number;
 
-    @Field(() => Int, {nullable:false})
-    id!: number;
+  @Field(() => String, { nullable: false })
+  title!: string;
 
-    @Field(() => String, {nullable:false})
-    title!: string;
+  @Field(() => String, { nullable: false })
+  content!: string;
 
-    @Field(() => String, {nullable:true})
-    description?: string;
+  @Field(() => Int, { nullable: false })
+  views!: number;
 
-    @Field(() => String, {nullable:false})
-    body!: string;
+  @Field(() => Int, { nullable: false })
+  categoryId!: number;
 
-    @Field(() => Boolean, {nullable:false})
-    published!: boolean;
+  @Field(() => Date, { nullable: false })
+  createdAt!: Date | string;
 
-    @Field(() => Date, {nullable:false})
-    createdAt!: Date | string;
+  @Field(() => Date, { nullable: false })
+  updatedAt!: Date | string;
 
-    @Field(() => Date, {nullable:false})
-    updatedAt!: Date | string;
+  @Field(() => ArticleCountAggregate, { nullable: true })
+  _count?: ArticleCountAggregate;
 
-    @Field(() => ArticleCountAggregate, {nullable:true})
-    _count?: ArticleCountAggregate;
+  @Field(() => ArticleAvgAggregate, { nullable: true })
+  _avg?: ArticleAvgAggregate;
 
-    @Field(() => ArticleAvgAggregate, {nullable:true})
-    _avg?: ArticleAvgAggregate;
+  @Field(() => ArticleSumAggregate, { nullable: true })
+  _sum?: ArticleSumAggregate;
 
-    @Field(() => ArticleSumAggregate, {nullable:true})
-    _sum?: ArticleSumAggregate;
+  @Field(() => ArticleMinAggregate, { nullable: true })
+  _min?: ArticleMinAggregate;
 
-    @Field(() => ArticleMinAggregate, {nullable:true})
-    _min?: ArticleMinAggregate;
-
-    @Field(() => ArticleMaxAggregate, {nullable:true})
-    _max?: ArticleMaxAggregate;
+  @Field(() => ArticleMaxAggregate, { nullable: true })
+  _max?: ArticleMaxAggregate;
 }
