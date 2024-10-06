@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { UserService } from './user/user.service';
 import { PrismaService } from './prisma.service';
 import { UserResolver } from './user/user.resolver';
+import { UserModule } from './user/user.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { UserResolver } from './user/user.resolver';
     }),
     AuthModule,
     SharedModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [AppService, UserResolver, UserService, PrismaService],
