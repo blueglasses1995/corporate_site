@@ -17,9 +17,13 @@ import {
 import { AffectedRows } from '../shared/prismagraphql/prisma';
 import { Resolver, Query, Args, Mutation } from '@nestjs/graphql';
 import { UserService } from './user.service';
+import { UseGuards } from '@nestjs/common';
+import { GqlJWTGuard } from 'src/guards/GqlJWTGuard';
+import { RolesGuard } from 'src/guards/RolesGuard';
 // import { CognitoAuthGuard } from '../shared/guards/cognito-auth/cognito-auth.guard';
 // import { RolesGuard } from '../shared/guards/roles/roles.guard';
 // import { UseGuards } from '@nestjs/common';
+@UseGuards(GqlJWTGuard, RolesGuard)
 @Resolver(() => User)
 export class UserResolver {
   constructor(private readonly userService: UserService) {}
