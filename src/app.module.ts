@@ -8,6 +8,7 @@ import { AuthModule } from './modules/auth/auth.module';
 import { SharedModule } from './shared/shared.module';
 import { UserService } from './user/user.service';
 import { PrismaService } from './prisma.service';
+import { UserResolver } from './user/user.resolver';
 
 @Module({
   imports: [
@@ -21,6 +22,6 @@ import { PrismaService } from './prisma.service';
     SharedModule,
   ],
   controllers: [AppController],
-  providers: [AppService, UserService, PrismaService],
+  providers: [AppService, UserResolver, UserService, PrismaService],
 })
 export class AppModule {}
